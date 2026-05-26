@@ -1,162 +1,93 @@
-
-// 1) BUG
-// Objetivo: identificar código que pode gerar erro em execução.
-// Problema: user pode ser null/undefined.
-
-
-export function getUserCity(user) {
+// Bug: pode quebrar se user ou address vier null
+export function vanessaTesteBug(user) {
   return user.address.city.toUpperCase();
 }
-function validar(usuarioAtivo) {
- if (usuarioAtivo = true) {
-   return "ativo";
- }
 
- return "inativo";
-}
-
-
-
-// 2) VULNERABILIDADE
-// Objetivo: detectar falha de segurança explorável.
-// Problema: eval executa código arbitrário.
-export function dangerousCalculate(expression) {
-  return eval(expression);
-}
-
-
-// 3) SECURITY HOTSPOT
-// Objetivo: marcar trecho sensível para revisão humana.
-// Problema: uso de innerHTML com dado externo pode virar XSS.
-export function renderUserName(name) {
-  const output = document.getElementById("output");
-  output.innerHTML = "Olá, " + name;
-}
-
-
-// 4) CODE SMELL
-// Objetivo: apontar problema de manutenibilidade.
-// Problema: variável não usada.
-export function calculateDiscount(price) {
-  const debugMessage = "calculando desconto";
-  return price * 0.9;
-}
-
-
-// 5) DÍVIDA TÉCNICA
-// Objetivo: Sonar estima esforço para corrigir issues.
-// Este  normalmente aparece como ponto de manutenção.
-//remover regra temporária de desconto fixo.
-export function legacyDiscount(price) {
-  return price - 10;
-}
-
-
-// 6) QUALITY GATE
-// Objetivo: aprovar/reprovar conforme critérios.
-// Este arquivo força bugs, smells, duplicação e baixa cobertura.
-// O gate pode falhar dependendo da configuração do servidor.
-
-
-// 7) NEW CODE
-// Objetivo: avaliar código novo ou alterado.
-// Altere esta função em uma branch/PR para ver issues no "New Code".
-export function newCodeExample(value) {
-  if (value == null) {
-    return "vazio";
+// Bug: atribuição dentro do if em vez de comparação
+export function vanessaTesteAtribuicao(usuarioAtivo) {
+  if (usuarioAtivo = true) {
+    return "ativo";
   }
-
-  return value;
+  return "inativo";
 }
 
-
-// 8) COBERTURA DE TESTES
-// Objetivo: mostrar quanto do código foi executado.
-// Esta função terá teste.
-export function sum(a, b) {
-  return a + b;
+// Vulnerabilidade: eval executa código recebido externamente
+export function vanessaTesteVulnerabilidade(expressao) {
+  return eval(expressao);
 }
 
-
-// Esta função NÃO terá teste para reduzir a cobertura.
-export function multiply(a, b) {
-  return a * b;
+// Security Hotspot: innerHTML com entrada externa precisa revisão
+export function vanessaTesteHotspot(nome) {
+  document.getElementById("output").innerHTML = nome;
 }
 
-
-// 9) DUPLICAÇÃO DE CÓDIGO
-// Objetivo: detectar blocos repetidos.
-// Há função parecida em duplicate.js.
-export function formatCustomerA(customer) {
-  const name = customer.name.trim().toUpperCase();
-  const email = customer.email.trim().toLowerCase();
-  const phone = customer.phone.trim();
-  const city = customer.city.trim().toUpperCase();
-
-  return `${name} | ${email} | ${phone} | ${city}`;
-}
-export function formatCustomerC(customer) {
-  const name = customer.name.trim().toUpperCase();
-  const email = customer.email.trim().toLowerCase();
-  const phone = customer.phone.trim();
-  const city = customer.city.trim().toUpperCase();
-
-  return `${name} | ${email} | ${phone} | ${city}`;
-}
-export function formatCustomerC(customer) {
-  const name = customer.name.trim().toUpperCase();
-  const email = customer.email.trim().toLowerCase();
-  const phone = customer.phone.trim();
-  const city = customer.city.trim().toUpperCase();
-
-  return `${name} | ${email} | ${phone} | ${city}`;
+// Code Smell: variável criada e não utilizada
+export function vanessaTesteCodeSmell(valor) {
+  const mensagemNaoUsada = "teste sonar";
+  return valor * 2;
 }
 
+// Dívida técnica: código temporário ou regra de negócio frágil
+export function vanessaTesteDividaTecnica(preco) {
+  return preco - 10;
+}
 
-// 10) COMPLEXIDADE CICLOMÁTICA
-// Objetivo: medir quantidade de caminhos lógicos.
-// Muitos if/else aumentam caminhos possíveis.
-export function calculateShipping(country, state, weight, isPremium) {
-  if (country === "BR") {
-    if (state === "SP") {
-      if (weight > 10) {
-        return isPremium ? 20 : 30;
-      } else {
-        return isPremium ? 10 : 15;
-      }
-    } else if (state === "RJ") {
-      if (weight > 10) {
-        return isPremium ? 25 : 35;
-      } else {
-        return isPremium ? 12 : 18;
-      }
-    } else {
-      return weight > 10 ? 40 : 25;
+// Duplicação: bloco repetido propositalmente
+export function vanessaTesteDuplicacaoA(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+// Duplicação: mesmo bloco repetido propositalmente
+export function vanessaTesteDuplicacaoB(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+// Complexidade ciclomática: muitos caminhos de decisão
+export function vanessaTesteComplexidadeCiclomatica(tipo, valor, ativo, premium) {
+  if (tipo === "A") {
+    if (valor > 100) {
+      return ativo ? 10 : 20;
     }
-  } else if (country === "US") {
-    return weight > 10 ? 50 : 30;
-  } else {
-    return 100;
+    return premium ? 30 : 40;
   }
+
+  if (tipo === "B") {
+    if (valor > 200) {
+      return ativo ? 50 : 60;
+    }
+    return premium ? 70 : 80;
+  }
+
+  if (tipo === "C") {
+    return valor > 300 ? 90 : 100;
+  }
+
+  return 0;
 }
 
-
-// 11) COMPLEXIDADE COGNITIVA
-// Objetivo: medir dificuldade de entendimento.
-// Muitos níveis aninhados aumentam a complexidade cognitiva.
-export function processOrder(order) {
-  if (order) {
-    if (order.items) {
-      if (order.items.length > 0) {
-        for (const item of order.items) {
-          if (item.active) {
-            if (item.price > 0) {
-              if (item.quantity > 0) {
-                if (item.discount) {
-                  return item.price * item.quantity - item.discount;
-                } else {
-                  return item.price * item.quantity;
+// Complexidade cognitiva: muitos níveis aninhados dificultam leitura
+export function vanessaTesteComplexidadeCognitiva(pedido) {
+  if (pedido) {
+    if (pedido.cliente) {
+      if (pedido.itens) {
+        for (const item of pedido.itens) {
+          if (item.ativo) {
+            if (item.preco > 0) {
+              if (item.quantidade > 0) {
+                if (item.desconto) {
+                  return item.preco * item.quantidade - item.desconto;
                 }
+                return item.preco * item.quantidade;
               }
             }
           }
@@ -168,108 +99,21 @@ export function processOrder(order) {
   return 0;
 }
 
+// Cobertura: função sem teste reduz percentual de coverage
+export function vanessaTesteSemCobertura(a, b) {
+  return a / b;
+}
 
-// 12) ISSUES
-// Objetivo: listar todos os problemas encontrados.
-// Este projeto deve gerar issues em Bugs, Vulnerabilities,
-// Security Hotspots e Code Smells.
+// Severidade: senha fixa tende a gerar issue de segurança
+export function vanessaTesteSeveridade() {
+  const password = "123456";
+  return password;
+}
 
-
-// 13) SEVERIDADE
-// Objetivo: classificar problemas por impacto.
-// eval costuma ter severidade alta por risco de segurança.
-// null dereference costuma aparecer como bug relevante.
-
-
-// 14) REGRAS
-// Objetivo: definir o que será considerado problema.
-// Exemplo: regra contra eval, regra contra variável não usada,
-// regra contra complexidade excessiva.
-
-
-// 15) QUALITY PROFILE
-// Objetivo: conjunto de regras usado por linguagem.
-// No Sonar, use um Quality Profile JavaScript com as regras ativas.
-
-
-// 16) DASHBOARD DO PROJETO
-// Objetivo: visão geral da saúde.
-// Após rodar scanner, veja Bugs, Vulnerabilities, Smells,
-// Coverage, Duplications e Quality Gate no dashboard.
-
-
-// 17) MEASURES / MÉTRICAS
-// Objetivo: métricas detalhadas.
-// Este projeto gera métricas de linhas, duplicação,
-// complexidade, cobertura e issues.
-
-
-// 18) BRANCH ANALYSIS
-// Objetivo: analisar branches separadas.
-// Rode scanner em uma branch diferente.
-// Exemplo:
-// sonar-scanner -Dsonar.branch.name=feature/sonar-demo
-
-
-// 19) PULL REQUEST ANALYSIS
-// Objetivo: avaliar qualidade antes do merge.
-// Exemplo:
-// sonar-scanner \
-//   -Dsonar.pullrequest.key=123 \
-//   -Dsonar.pullrequest.branch=feature/sonar-demo \
-//   -Dsonar.pullrequest.base=main
-
-
-// 20) CI/CD
-// Objetivo: rodar análise automaticamente.
-// Veja .github/workflows/sonar.yml.
-
-
-// 21) FALSE POSITIVE
-// Objetivo: marcar issue que não é problema real.
-// Exemplo didático: após o Sonar apontar uma issue,
-// marque como False Positive pela interface do Sonar.
-
-
-// 22) ACCEPTED / WON'T FIX
-// Objetivo: aceitar temporariamente um problema conhecido.
-// Exemplo: manter código legado por decisão técnica documentada.
-
-
-// 23) HISTÓRICO DE EVOLUÇÃO
-// Objetivo: acompanhar melhora/piora.
-// Faça commits corrigindo issues e veja o histórico do projeto.
-
-
-// 24) PORTFOLIOS
-// Objetivo: agrupar vários projetos para visão executiva.
-// Recurso usado em edições comerciais do SonarQube.
-
-
-// 25) APPLICATIONS
-// Objetivo: agrupar projetos que formam uma aplicação maior.
-// Também depende da edição/ambiente usado.
-
-
-// 26) PERMISSÕES
-// Objetivo: controlar quem vê/administra/altera projetos.
-// Configure no SonarQube: Project Settings > Permissions.
-
-
-// 27) WEB API
-// Objetivo: automatizar consultas externas.
-// Exemplo:
-// GET /api/issues/search?componentKeys=sonar-js-demo
-
-
-// 28) NOTIFICAÇÕES
-// Objetivo: avisar mudanças.
-// Configure notificações no usuário/projeto para Quality Gate,
-// issues novas ou mudanças relevantes.
-
-
-// Código de tela
-document.getElementById("btn")?.addEventListener("click", () => {
-  const name = document.getElementById("name").value;
-  renderUserName(name);
-});
+// New Code: altere esta função para aparecer em código novo
+export function vanessaTesteNovoCodigo(valor) {
+  if (valor == null) {
+    return "sem valor";
+  }
+  return valor;
+}
