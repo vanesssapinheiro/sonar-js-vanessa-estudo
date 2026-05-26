@@ -85,6 +85,22 @@ export function formatCustomerA(customer) {
 
   return `${name} | ${email} | ${phone} | ${city}`;
 }
+export function formatCustomerC(customer) {
+  const name = customer.name.trim().toUpperCase();
+  const email = customer.email.trim().toLowerCase();
+  const phone = customer.phone.trim();
+  const city = customer.city.trim().toUpperCase();
+
+  return `${name} | ${email} | ${phone} | ${city}`;
+}
+export function formatCustomerC(customer) {
+  const name = customer.name.trim().toUpperCase();
+  const email = customer.email.trim().toLowerCase();
+  const phone = customer.phone.trim();
+  const city = customer.city.trim().toUpperCase();
+
+  return `${name} | ${email} | ${phone} | ${city}`;
+}
 
 
 // 10) COMPLEXIDADE CICLOMÁTICA
