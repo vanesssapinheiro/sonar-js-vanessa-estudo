@@ -2,5 +2,5 @@ projectKey=sonar-js-vanessa-estudo
 serverUrl=http://localhost:9000
 serverVersion=26.3.0.120487
 dashboardUrl=http://localhost:9000/dashboard?id=sonar-js-vanessa-estudo
-ceTaskId=1bdff231-6074-4f78-ac59-fd7f0b17af2f
-ceTaskUrl=http://localhost:9000/api/ce/task?id=1bdff231-6074-4f78-ac59-fd7f0b17af2f
+ceTaskId=95827ea9-d5a7-43a4-8bdf-a8c7a57de5b1
+ceTaskUrl=http://localhost:9000/api/ce/task?id=95827ea9-d5a7-43a4-8bdf-a8c7a57de5b1
