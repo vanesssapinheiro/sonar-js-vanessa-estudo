@@ -2,9 +2,19 @@
 // 1) BUG
 // Objetivo: identificar código que pode gerar erro em execução.
 // Problema: user pode ser null/undefined.
+
+
 export function getUserCity(user) {
   return user.address.city.toUpperCase();
 }
+function validar(usuarioAtivo) {
+ if (usuarioAtivo = true) {
+   return "ativo";
+ }
+
+ return "inativo";
+}
+
 
 
 // 2) VULNERABILIDADE
