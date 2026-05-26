@@ -1,0 +1,23 @@
+{
+  "name": "sonar-js-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "jest --coverage",
+    "sonar": "sonar-scanner"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sonar-scanner": "^3.1.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/ignored.generated.js"
+    ]
+  }
+}
