@@ -42,8 +42,52 @@ export function vanessaTesteDuplicacaoA(cliente) {
   return `${nome} | ${email} | ${telefone} | ${cidade}`;
 }
 
-// Duplicação: mesmo bloco repetido propositalmente
 export function vanessaTesteDuplicacaoB(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+export function vanessaTesteDuplicacaoc(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+export function vanessaTesteDuplicacaoD(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+export function vanessaTesteDuplicacaoE(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+export function vanessaTesteDuplicacaoF(cliente) {
+  const nome = cliente.nome.trim().toUpperCase();
+  const email = cliente.email.trim().toLowerCase();
+  const telefone = cliente.telefone.trim();
+  const cidade = cliente.cidade.trim().toUpperCase();
+
+  return `${nome} | ${email} | ${telefone} | ${cidade}`;
+}
+
+export function vanessaTesteDuplicacaoG(cliente) {
   const nome = cliente.nome.trim().toUpperCase();
   const email = cliente.email.trim().toLowerCase();
   const telefone = cliente.telefone.trim();
@@ -116,4 +160,13 @@ export function vanessaTesteNovoCodigo(valor) {
     return "sem valor";
   }
   return valor;
+}
+
+
+// Categoria: Ponto de acesso de segurança
+export function vanessaHotspotRegexEmail(valor) {
+  const regex =
+    /^([a-zA-Z0-9._%-]+)+@([a-zA-Z0-9.-]+)+\.([a-zA-Z]{2,6})$/;
+
+  return regex.test(valor);
 }
