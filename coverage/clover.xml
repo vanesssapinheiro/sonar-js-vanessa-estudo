@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1779993726662" clover="3.2.0">
-  <project timestamp="1779993726662" name="All files">
+<coverage generated="1780344368381" clover="3.2.0">
+  <project timestamp="1780344368381" name="All files">
     <metrics statements="74" coveredstatements="43" conditionals="38" coveredconditionals="23" methods="19" coveredmethods="12" elements="131" coveredelements="78" complexity="0" loc="74" ncloc="74" packages="1" files="1" classes="1"/>
     <file name="app.js" path="/home/vanessa/Documentos/arquitetura vanessa/sonar-js-vanessa-teste/sonar-js-vanessa-estudo/src/app.js">
       <metrics statements="74" coveredstatements="43" conditionals="38" coveredconditionals="23" methods="19" coveredmethods="12"/>
